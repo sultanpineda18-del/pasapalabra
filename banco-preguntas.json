@@ -1,0 +1,866 @@
+{
+  "A": [
+    {
+      "id": "A1",
+      "a": "Apoyo",
+      "q": "¿Cómo se llama la ayuda que damos o recibimos cuando alguien la necesita?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "A2",
+      "a": "Acuerdo",
+      "q": "¿Cómo llamamos a una decisión que dos o más personas toman en conjunto?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "A3",
+      "a": "Amistad",
+      "q": "¿Qué relación de cariño y confianza une a buenos amigos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "A4",
+      "a": "Abeja",
+      "q": "¿Qué insecto produce miel y visita las flores?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "A5",
+      "a": "Arroz",
+      "q": "¿Qué grano blanco se come cocido y suele acompañar muchos platos?",
+      "type": "entretenimiento"
+    }
+  ],
+  "B": [
+    {
+      "id": "B1",
+      "a": "Bingo",
+      "q": "¿Qué juego consiste en marcar números en un cartón?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "B2",
+      "a": "Bicicleta",
+      "q": "¿Qué vehículo de dos ruedas se mueve con pedales?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "B3",
+      "a": "Bufanda",
+      "q": "¿Qué prenda se enrolla alrededor del cuello cuando hace frío?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "B4",
+      "a": "Balón",
+      "q": "¿Con qué objeto redondo se juega al fútbol?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "B5",
+      "a": "Biblioteca",
+      "q": "¿Dónde se prestan libros para leer sin tener que comprarlos?",
+      "type": "entretenimiento"
+    }
+  ],
+  "C": [
+    {
+      "id": "C1",
+      "a": "Comunidad",
+      "q": "¿Cómo llamamos a un conjunto de personas que comparten un barrio o un espacio común?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "C2",
+      "a": "Colaboración",
+      "q": "¿Cómo se llama trabajar con otras personas para conseguir algo juntos?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "C3",
+      "a": "Cueca",
+      "q": "¿Cuál es el baile nacional de Chile?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "C4",
+      "a": "Cuchara",
+      "q": "¿Qué utensilio usamos para tomar sopa?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "C5",
+      "a": "Chocolate",
+      "q": "¿Qué dulce, a menudo café, se elabora a partir del cacao?",
+      "type": "entretenimiento"
+    }
+  ],
+  "D": [
+    {
+      "id": "D1",
+      "a": "Derecho",
+      "q": "¿Cómo se llama algo que corresponde a toda persona, como recibir un trato digno?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "D2",
+      "a": "Diálogo",
+      "q": "¿Cómo se llama conversar y escuchar ideas para entenderse mejor?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "D3",
+      "a": "Dado",
+      "q": "¿Qué objeto de seis caras se lanza en muchos juegos de mesa?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "D4",
+      "a": "Durazno",
+      "q": "¿Qué fruta tiene una piel suave y un carozo grande?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "D5",
+      "a": "Dominó",
+      "q": "¿Qué juego se juega con fichas rectangulares que tienen puntos?",
+      "type": "entretenimiento"
+    }
+  ],
+  "E": [
+    {
+      "id": "E1",
+      "a": "Equidad",
+      "q": "¿Cómo se llama dar a cada persona los apoyos que necesita para tener oportunidades justas?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "E2",
+      "a": "Escucha",
+      "q": "¿Qué acción consiste en prestar atención a lo que otra persona dice?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "E3",
+      "a": "Empanada",
+      "q": "¿Qué preparación chilena rellena puede ser de pino o de queso?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "E4",
+      "a": "Estrella",
+      "q": "¿Qué cuerpo brillante podemos observar en el cielo durante la noche?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "E5",
+      "a": "Escoba",
+      "q": "¿Qué utensilio usamos para barrer el piso?",
+      "type": "entretenimiento"
+    }
+  ],
+  "F": [
+    {
+      "id": "F1",
+      "a": "Feria",
+      "q": "¿Qué lugar reúne puestos de frutas, verduras y otros productos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "F2",
+      "a": "Fútbol",
+      "q": "¿Qué deporte se juega tratando de meter una pelota en el arco contrario?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "F3",
+      "a": "Flor",
+      "q": "¿Qué parte colorida de muchas plantas suele tener pétalos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "F4",
+      "a": "Fósforo",
+      "q": "¿Qué pequeño palito se frota para encender fuego?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "F5",
+      "a": "Frutilla",
+      "q": "¿Qué fruta roja y pequeña tiene semillas visibles por fuera?",
+      "type": "entretenimiento"
+    }
+  ],
+  "G": [
+    {
+      "id": "G1",
+      "a": "Grupo",
+      "q": "¿Cómo llamamos a varias personas que se reúnen para realizar una actividad?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "G2",
+      "a": "Generosidad",
+      "q": "¿Qué cualidad mostramos cuando compartimos o ayudamos sin esperar algo a cambio?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "G3",
+      "a": "Guitarra",
+      "q": "¿Qué instrumento de cuerdas se usa para acompañar cuecas y canciones?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "G4",
+      "a": "Gato",
+      "q": "¿Qué animal doméstico suele maullar?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "G5",
+      "a": "Gorro",
+      "q": "¿Qué prenda se usa en la cabeza para protegerse del frío o del sol?",
+      "type": "entretenimiento"
+    }
+  ],
+  "H": [
+    {
+      "id": "H1",
+      "a": "Humita",
+      "q": "¿Qué comida chilena se prepara con choclo molido y se envuelve en hojas de maíz?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "H2",
+      "a": "Helado",
+      "q": "¿Qué postre frío se puede pedir en sabores como vainilla o frutilla?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "H3",
+      "a": "Horno",
+      "q": "¿En qué aparato se hornean panes, pasteles o empanadas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "H4",
+      "a": "Hospital",
+      "q": "¿A qué establecimiento se acude para recibir atención médica especializada?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "H5",
+      "a": "Hilo",
+      "q": "¿Qué material delgado pasa por la aguja cuando queremos coser?",
+      "type": "entretenimiento"
+    }
+  ],
+  "I": [
+    {
+      "id": "I1",
+      "a": "Inclusión",
+      "q": "¿Cómo se llama procurar que nadie quede fuera de las actividades por sus diferencias?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "I2",
+      "a": "Igualdad",
+      "q": "¿Qué principio señala que todas las personas merecen los mismos derechos?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "I3",
+      "a": "Invierno",
+      "q": "¿Qué estación del año suele tener las temperaturas más bajas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "I4",
+      "a": "Imán",
+      "q": "¿Qué objeto atrae ciertos metales, como el hierro?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "I5",
+      "a": "Isla",
+      "q": "¿Cómo se llama un territorio rodeado de agua por todos lados?",
+      "type": "entretenimiento"
+    }
+  ],
+  "J": [
+    {
+      "id": "J1",
+      "a": "Junta de vecinos",
+      "q": "¿Qué organización reúne a habitantes de un barrio para tratar asuntos de su comunidad?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "J2",
+      "a": "Justicia",
+      "q": "¿Qué valor busca que se respeten los derechos y se trate a las personas con imparcialidad?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "J3",
+      "a": "Juego",
+      "q": "¿Cómo llamamos a una actividad que hacemos por diversión, con o sin reglas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "J4",
+      "a": "Jardín",
+      "q": "¿Cómo se llama el espacio donde se cultivan flores y otras plantas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "J5",
+      "a": "Jabón",
+      "q": "¿Qué producto usamos con agua para lavarnos las manos?",
+      "type": "entretenimiento"
+    }
+  ],
+  "K": [
+    {
+      "id": "K1",
+      "a": "Kilo",
+      "q": "¿Qué unidad de peso usamos al comprar papas o tomates?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "K2",
+      "a": "Kiosco",
+      "q": "¿Cómo se llama un local pequeño que vende diarios, dulces u otros productos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "K3",
+      "a": "Kiwi",
+      "q": "¿Qué fruta tiene piel café y pulpa verde con semillas negras?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "K4",
+      "a": "Karaoke",
+      "q": "¿Qué diversión consiste en cantar canciones siguiendo una pista musical?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "K5",
+      "a": "Kárate",
+      "q": "¿Qué arte marcial japonés utiliza golpes y técnicas de defensa?",
+      "type": "entretenimiento"
+    }
+  ],
+  "L": [
+    {
+      "id": "L1",
+      "a": "Libertad",
+      "q": "¿Qué derecho permite pensar, expresarse y tomar decisiones propias respetando a los demás?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "L2",
+      "a": "Liderazgo",
+      "q": "¿Cómo se llama la capacidad de orientar y motivar a un grupo?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "L3",
+      "a": "Limón",
+      "q": "¿Qué fruto amarillo o verde se exprime para aliñar ensaladas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "L4",
+      "a": "Luna",
+      "q": "¿Qué satélite natural vemos en el cielo nocturno?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "L5",
+      "a": "Lápiz",
+      "q": "¿Qué objeto usamos para escribir o dibujar sobre papel?",
+      "type": "entretenimiento"
+    }
+  ],
+  "M": [
+    {
+      "id": "M1",
+      "a": "Música",
+      "q": "¿Qué arte escuchamos en canciones, radios y conciertos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "M2",
+      "a": "Manzana",
+      "q": "¿Qué fruta puede ser roja o verde y se come a mordiscos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "M3",
+      "a": "Mesa",
+      "q": "¿Qué mueble tiene una superficie donde comemos o jugamos cartas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "M4",
+      "a": "Mermelada",
+      "q": "¿Qué dulce de frutas se unta sobre el pan?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "M5",
+      "a": "Micro",
+      "q": "¿Cómo se llama coloquialmente al autobús del transporte público en Chile?",
+      "type": "entretenimiento"
+    }
+  ],
+  "N": [
+    {
+      "id": "N1",
+      "a": "Necesidad",
+      "q": "¿Cómo llamamos a aquello que resulta importante para vivir bien, como alimentarse o tener abrigo?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "N2",
+      "a": "Norma",
+      "q": "¿Qué regla compartida ayuda a organizar la convivencia en un lugar?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "N3",
+      "a": "Naranja",
+      "q": "¿Qué fruta cítrica tiene cáscara anaranjada y se puede exprimir?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "N4",
+      "a": "Nieve",
+      "q": "¿Cómo se llama el agua congelada que cae del cielo en copos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "N5",
+      "a": "Nido",
+      "q": "¿Qué construcción hacen muchas aves para poner sus huevos?",
+      "type": "entretenimiento"
+    }
+  ],
+  "Ñ": [
+    {
+      "id": "Ñ1",
+      "a": "Baño",
+      "q": "Contiene la Ñ: ¿Cómo se llama el lugar de la casa donde está el inodoro?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Ñ2",
+      "a": "Mañana",
+      "q": "Contiene la Ñ: ¿Qué parte del día viene antes del mediodía?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Ñ3",
+      "a": "Piñata",
+      "q": "Contiene la Ñ: ¿Qué objeto festivo se rompe para que salgan dulces?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Ñ4",
+      "a": "Sueño",
+      "q": "Contiene la Ñ: ¿Cómo se llama lo que experimentamos al dormir, o algo que anhelamos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Ñ5",
+      "a": "Año",
+      "q": "Contiene la Ñ: ¿Cómo llamamos al período de doce meses?",
+      "type": "entretenimiento"
+    }
+  ],
+  "O": [
+    {
+      "id": "O1",
+      "a": "Opinión",
+      "q": "¿Cómo llamamos a lo que una persona piensa sobre un tema?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "O2",
+      "a": "Organización",
+      "q": "¿Cómo se llama un conjunto de personas que coordina esfuerzos para alcanzar un objetivo?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "O3",
+      "a": "Olla",
+      "q": "¿Qué recipiente de cocina se usa para preparar guisos o sopas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "O4",
+      "a": "Otoño",
+      "q": "¿Qué estación llega después del verano y antes del invierno?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "O5",
+      "a": "Oveja",
+      "q": "¿Qué animal de granja nos da lana?",
+      "type": "entretenimiento"
+    }
+  ],
+  "P": [
+    {
+      "id": "P1",
+      "a": "Participación",
+      "q": "¿Cómo se llama involucrarse, proponer ideas o ayudar a tomar decisiones en una comunidad?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "P2",
+      "a": "Pobreza",
+      "q": "¿Cómo se llama una situación de privaciones que dificulta cubrir necesidades y ejercer derechos?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "P3",
+      "a": "Pan",
+      "q": "¿Qué alimento de harina es habitual en el desayuno y la once chilena?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "P4",
+      "a": "Pelota",
+      "q": "¿Con qué objeto redondo podemos jugar a lanzarlo o patearlo?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "P5",
+      "a": "Paraguas",
+      "q": "¿Qué objeto abrimos para protegernos de la lluvia?",
+      "type": "entretenimiento"
+    }
+  ],
+  "Q": [
+    {
+      "id": "Q1",
+      "a": "Queso",
+      "q": "¿Qué alimento hecho con leche suele llevar un sándwich o empanada?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Q2",
+      "a": "Queque",
+      "q": "¿Cómo se llama el bizcocho dulce que se suele comer con té o café?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Q3",
+      "a": "Quincho",
+      "q": "¿Cómo se llama un espacio acondicionado para hacer asados y reunirse?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Q4",
+      "a": "Quena",
+      "q": "¿Qué instrumento de viento andino se parece a una flauta?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Q5",
+      "a": "Quiltro",
+      "q": "¿Qué palabra chilena se usa para un perro mestizo?",
+      "type": "entretenimiento"
+    }
+  ],
+  "R": [
+    {
+      "id": "R1",
+      "a": "Respeto",
+      "q": "¿Qué valor consiste en tratar a los demás con dignidad y consideración?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "R2",
+      "a": "Representación",
+      "q": "¿Cómo se llama actuar o hablar en nombre de otras personas que nos eligieron?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "R3",
+      "a": "Radio",
+      "q": "¿Qué aparato se utiliza para escuchar noticias, música y programas de voz?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "R4",
+      "a": "Reloj",
+      "q": "¿Qué objeto usamos para saber la hora?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "R5",
+      "a": "Ropa",
+      "q": "¿Cómo llamamos al conjunto de prendas que vestimos?",
+      "type": "entretenimiento"
+    }
+  ],
+  "S": [
+    {
+      "id": "S1",
+      "a": "Solidaridad",
+      "q": "¿Qué valor demostramos al ayudar y acompañar a quienes lo necesitan?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "S2",
+      "a": "Salud",
+      "q": "¿Qué aspecto de nuestra vida cuidamos al prevenir enfermedades y recibir atención médica?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "S3",
+      "a": "Sopaipilla",
+      "q": "¿Qué masa frita chilena puede comerse con pebre o pasada en chancaca?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "S4",
+      "a": "Sombrero",
+      "q": "¿Qué prenda con ala se usa sobre la cabeza?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "S5",
+      "a": "Sandía",
+      "q": "¿Qué fruta grande tiene pulpa roja y mucha agua?",
+      "type": "entretenimiento"
+    }
+  ],
+  "T": [
+    {
+      "id": "T1",
+      "a": "Trabajo",
+      "q": "¿Qué actividad remunerada realizan muchas personas para obtener ingresos?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "T2",
+      "a": "Taller",
+      "q": "¿Cómo llamamos a una actividad grupal donde se aprende o practica algo, como pintura o cocina?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "T3",
+      "a": "Televisión",
+      "q": "¿Qué aparato permite ver noticias, películas y programas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "T4",
+      "a": "Tren",
+      "q": "¿Qué medio de transporte viaja por vías férreas?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "T5",
+      "a": "Tomate",
+      "q": "¿Qué fruto rojo se usa habitualmente en ensaladas y salsas?",
+      "type": "entretenimiento"
+    }
+  ],
+  "U": [
+    {
+      "id": "U1",
+      "a": "Unión",
+      "q": "¿Qué palabra describe que las personas se mantienen juntas y se apoyan?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "U2",
+      "a": "Urna",
+      "q": "¿Cómo se llama la caja donde se depositan los votos en una elección?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "U3",
+      "a": "Uva",
+      "q": "¿Qué fruta pequeña crece en racimos y puede ser verde o morada?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "U4",
+      "a": "Uniforme",
+      "q": "¿Qué ropa similar usan integrantes de una escuela o equipo?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "U5",
+      "a": "Universidad",
+      "q": "¿Qué institución ofrece estudios superiores y carreras profesionales?",
+      "type": "entretenimiento"
+    }
+  ],
+  "V": [
+    {
+      "id": "V1",
+      "a": "Voto",
+      "q": "¿Cómo se llama la elección que expresa una persona al participar en una votación?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "V2",
+      "a": "Voluntariado",
+      "q": "¿Cómo se llama colaborar libremente en una causa sin buscar un pago?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "V3",
+      "a": "Ventana",
+      "q": "¿Qué abertura de una pared deja entrar luz y aire?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "V4",
+      "a": "Verano",
+      "q": "¿Qué estación del año suele tener los días más calurosos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "V5",
+      "a": "Vela",
+      "q": "¿Qué objeto de cera con mecha se enciende para dar luz?",
+      "type": "entretenimiento"
+    }
+  ],
+  "W": [
+    {
+      "id": "W1",
+      "a": "WhatsApp",
+      "q": "¿Qué aplicación se usa para enviar mensajes, audios y fotografías por teléfono?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "W2",
+      "a": "Wifi",
+      "q": "¿Cómo se llama la conexión inalámbrica que usamos para acceder a internet?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "W3",
+      "a": "Walkman",
+      "q": "¿Qué aparato portátil, muy famoso décadas atrás, permitía escuchar casetes con audífonos?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "W4",
+      "a": "Web",
+      "q": "¿Qué palabra de tres letras suele aparecer al hablar de páginas de internet?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "W5",
+      "a": "Wok",
+      "q": "¿Cómo se llama una sartén honda de origen asiático usada para saltear alimentos?",
+      "type": "entretenimiento"
+    }
+  ],
+  "X": [
+    {
+      "id": "X1",
+      "a": "Éxito",
+      "q": "Contiene la X: ¿Cómo se llama conseguir aquello que uno se propuso?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "X2",
+      "a": "Taxi",
+      "q": "Contiene la X: ¿Qué vehículo de transporte cobra por llevar pasajeros a su destino?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "X3",
+      "a": "Examen",
+      "q": "Contiene la X: ¿Qué prueba se realiza para evaluar conocimientos o revisar la salud?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "X4",
+      "a": "Boxeo",
+      "q": "Contiene la X: ¿Qué deporte se practica con guantes y golpes de puño?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "X5",
+      "a": "Texto",
+      "q": "Contiene la X: ¿Cómo llamamos a un conjunto de palabras escritas que transmite un mensaje?",
+      "type": "entretenimiento"
+    }
+  ],
+  "Y": [
+    {
+      "id": "Y1",
+      "a": "Yogur",
+      "q": "¿Qué alimento cremoso derivado de la leche se suele comer con cuchara?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Y2",
+      "a": "Yema",
+      "q": "¿Cómo se llama la parte amarilla del huevo?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Y3",
+      "a": "Yoyó",
+      "q": "¿Qué juguete sube y baja atado a una cuerda?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Y4",
+      "a": "Yate",
+      "q": "¿Qué embarcación suele utilizarse para paseos o recreación en el agua?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Y5",
+      "a": "Yerno",
+      "q": "¿Cómo se llama al esposo de una hija?",
+      "type": "entretenimiento"
+    }
+  ],
+  "Z": [
+    {
+      "id": "Z1",
+      "a": "Pobreza",
+      "q": "Contiene la Z: ¿Qué situación social implica privaciones que impiden cubrir necesidades y ejercer derechos?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "Z2",
+      "a": "Voz",
+      "q": "Contiene la Z: ¿Qué palabra usamos para decir que alguien tiene la posibilidad de expresarse y ser escuchado?",
+      "type": "ciudadania"
+    },
+    {
+      "id": "Z3",
+      "a": "Zanahoria",
+      "q": "¿Qué hortaliza de color anaranjado suele comerse rallada o cocida?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Z4",
+      "a": "Zapato",
+      "q": "¿Qué prenda de vestir cubre y protege el pie?",
+      "type": "entretenimiento"
+    },
+    {
+      "id": "Z5",
+      "a": "Zorro",
+      "q": "¿Qué animal silvestre de hocico alargado y cola peluda es famoso por su astucia?",
+      "type": "entretenimiento"
+    }
+  ]
+}
