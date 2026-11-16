@@ -42,13 +42,20 @@ function buildQuestions(previous = []){
   }
   const chosen = new Set(['P','Z',...shuffled.filter(l=>l!=='P'&&l!=='Z').slice(0,6)]);
   const usedAnswers = new Set();
+  // Todas las rondas mantienen alguna pregunta sobre pobreza o protección social,
+  // alternando la letra para no reducir la variedad del rosco.
+  const povertyLetter=pick(['P','Z']);
+  const povertyOptions=new Set(['Pobreza','Protección social','Reducción de la pobreza','Pobreza multidimensional']);
   return LETTERS.map((letter,i)=>{
     let options = BANK[letter].filter(q=>chosen.has(letter)?q.type==='ciudadania':q.type!=='ciudadania');
-    if(letter==='Z') options = options.filter(q=>q.a === (usedAnswers.has('pobreza') ? 'Voz' : 'Pobreza'));
+    if(letter===povertyLetter) options=options.filter(q=>povertyOptions.has(q.a));
     if(!options.length) options = BANK[letter];
     const previousId = previous[i]?.id;
-    let available = options.filter(q=>q.id!==previousId && !usedAnswers.has(q.a.toLowerCase()));
-    if(!available.length) available = options.filter(q=>q.id!==previousId);
+    const previousAnswer = previous[i]?.a?.toLocaleLowerCase('es');
+    const distinct = q => !usedAnswers.has(q.a.toLocaleLowerCase('es'));
+    let available = options.filter(q=>q.id!==previousId && q.a.toLocaleLowerCase('es')!==previousAnswer && distinct(q));
+    if(!available.length) available = options.filter(q=>q.id!==previousId && distinct(q));
+    if(!available.length) available = options.filter(q=>distinct(q));
     if(!available.length) available = options;
     const result = pick(available);
     usedAnswers.add(result.a.toLowerCase());
@@ -95,10 +102,13 @@ function stats(room){
 function currentQuestion(room){ return room.questions[room.index]; }
 function currentClue(room){
   const q = currentQuestion(room);
+  const letter=LETTERS[room.index];
+  // Se consideran equivalentes las vocales con y sin tilde; la Ñ mantiene su identidad.
+  const normalizedStart=q.a.toLocaleUpperCase('es').replace(/[ÁÉÍÓÚÜ]/g,c=>({'Á':'A','É':'E','Í':'I','Ó':'O','Ú':'U','Ü':'U'}[c]));
   return {
-    letter: LETTERS[room.index],
-    question: q.q.replace(/^Contiene la [ÑXZO]:\s*/,''),
-    rule: q.a.normalize('NFC').toLocaleUpperCase('es').startsWith(LETTERS[room.index])?'Empieza con':'Contiene la',
+    letter,
+    question: q.q.replace(/^(?:Contiene la|Empieza con) [A-ZÑ]:\s*/,''),
+    rule: normalizedStart.startsWith(letter)?'Empieza con':'Contiene la',
     type: q.type
   };
 }
@@ -112,7 +122,7 @@ function finalSummary(room){
     return {
       letter,
       answer:q.a,
-      question:q.q.replace(/^Contiene la [ÑXZO]:\s*/,''),
+      question:q.q.replace(/^(?:Contiene la|Empieza con) [A-ZÑ]:\s*/,''),
       type:q.type,
       status:room.answers[index]
     };

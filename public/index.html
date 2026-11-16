@@ -23,7 +23,7 @@
       <span class="eyebrow">JUEGO INTERACTIVO · 27 LETRAS</span>
       <h1>Una letra.<br><strong>Muchas historias.</strong></h1>
       <p>Un Pasapalabra para reír, recordar y conversar. Combina cultura general con participación ciudadana, respeto, comunidad y derechos.</p>
-      <div class="feature-bubbles"><span>135 preguntas</span><span>Temporizador</span><span>Dos dispositivos</span><span>Sin instalar nada</span></div>
+      <div class="feature-bubbles"><span>1.350 preguntas</span><span>Temporizador</span><span>Dos dispositivos</span><span>Sin instalar nada</span></div>
       <button class="btn btn-primary btn-lg" id="createRoom"><span>Crear una partida</span><span aria-hidden="true">↗</span></button>
       <p class="micro">Crea una sala y comparte el enlace de presentación. Los dispositivos pueden estar en redes distintas.</p>
     </div>
@@ -47,28 +47,44 @@
 
     <div class="play-grid" id="playGrid">
       <section class="stage" aria-label="Rosco de Pasapalabra">
-        <div class="ring-wrap"><svg class="ring-svg" id="ringSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-label="Rosco de 27 letras">
-          <circle cx="320" cy="320" r="251" class="ring-track"/>
-          <g id="lettersGroup"></g>
-          <circle cx="320" cy="320" r="193" class="center-disc" id="centerDisc"/>
-          <g id="centerBase">
-            <text x="320" y="265" class="center-caption" text-anchor="middle">TIEMPO RESTANTE</text>
-            <text x="320" y="350" class="center-clock" text-anchor="middle" id="centerTimer">10:00</text>
-            <text x="320" y="406" class="center-score" text-anchor="middle" id="centerScore">0 ACIERTOS · 27 PENDIENTES</text>
-          </g>
-          <g id="feedback" visibility="hidden">
-            <circle cx="320" cy="320" r="193" id="feedbackBg"/>
-            <text x="320" y="341" class="feedback-symbol" text-anchor="middle" id="feedbackIcon">✓</text>
-            <text x="320" y="396" class="feedback-word" text-anchor="middle" id="feedbackWord">¡CORRECTO!</text>
-          </g>
-        </svg></div>
+        <div class="ring-wrap">
+          <svg class="ring-svg" id="ringSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" role="img" aria-label="Rosco de 27 letras">
+            <circle cx="320" cy="320" r="251" class="ring-track"/>
+            <g id="lettersGroup"></g>
+            <circle cx="320" cy="320" r="193" class="center-disc" id="centerDisc"/>
+            <g id="centerBase">
+              <text x="320" y="265" class="center-caption" text-anchor="middle">TIEMPO RESTANTE</text>
+              <text x="320" y="350" class="center-clock" text-anchor="middle" id="centerTimer">10:00</text>
+              <text x="320" y="406" class="center-score" text-anchor="middle" id="centerScore">0 ACIERTOS · 27 PENDIENTES</text>
+            </g>
+            <g id="feedback" visibility="hidden">
+              <circle cx="320" cy="320" r="193" id="feedbackBg"/>
+              <text x="320" y="341" class="feedback-symbol" text-anchor="middle" id="feedbackIcon">✓</text>
+              <text x="320" y="396" class="feedback-word" text-anchor="middle" id="feedbackWord">¡CORRECTO!</text>
+            </g>
+          </svg>
+          <div class="finale-overlay hidden" id="finaleOverlay" aria-live="polite">
+            <div class="finale-card">
+              <div class="spark spark-1"></div><div class="spark spark-2"></div><div class="spark spark-3"></div>
+              <p class="finale-eyebrow">PARTIDA TERMINADA</p>
+              <h2>¡Gracias por su participación!</h2>
+              <p id="finaleSubtext">Gracias por jugar, compartir y participar en comunidad.</p>
+            </div>
+          </div>
+        </div>
         <div class="legend" aria-hidden="true"><span><i class="dot dot-pending"></i>Pendiente</span><span><i class="dot dot-ok"></i>Correcta</span><span><i class="dot dot-bad"></i>Incorrecta</span><span><i class="dot dot-active"></i>Letra actual</span></div>
         <div class="public-question" id="publicQuestion">
           <div class="public-q-top"><span class="q-letter" id="publicLetter">A</span><span id="publicRule">Empieza con A</span></div>
           <p id="publicText">La persona que dirige el juego mostrará la pregunta aquí.</p>
           <p class="hint-text hidden" id="publicHint"></p>
+          <p class="answer-reveal hidden" id="publicAnswer"></p>
         </div>
         <div class="waiting-strap" id="waitingStrap">La pregunta se mostrará cuando la persona que dirige el juego lo indique.</div>
+        <div class="final-summary hidden" id="finalSummary">
+          <h3>Respuestas de la partida</h3>
+          <p>Repaso final de las respuestas para compartirlas con el grupo.</p>
+          <div class="summary-grid" id="summaryGrid"></div>
+        </div>
       </section>
 
       <aside class="host-panel hidden" id="hostPanel" aria-label="Panel de control">
@@ -76,17 +92,18 @@
         <div class="host-question">
           <div class="host-q-label"><span id="hostLetter" class="host-letter">A</span><span id="hostRule">Empieza con A</span><span id="hostType" class="type-tag">Cultura general</span></div>
           <p id="hostText">Cargando pregunta…</p>
-          <div class="answer-box" id="answerBox"><span>Respuesta:</span><strong id="answerText">•••••••</strong></div>
+          <div class="answer-box" id="answerBox"><span>Respuesta:</span><strong id="answerText">Cargando…</strong></div>
         </div>
         <div class="control-grid">
           <button id="correctBtn" class="action action-ok"><span>✓</span> Correcta</button>
           <button id="wrongBtn" class="action action-bad"><span>✕</span> Incorrecta</button>
           <button id="passBtn" class="action action-pass"><span>↪</span> Pasapalabra</button>
-          <button id="answerBtn" class="action action-outline">Ver respuesta</button>
+          <button id="answerBtn" class="action action-outline">Mostrar respuesta al público</button>
         </div>
         <div class="toggle-controls">
           <button id="clueBtn" class="toggle-button">Mostrar pregunta al público</button>
           <button id="hintBtn" class="toggle-button">Mostrar pista adicional</button>
+          <button id="finalRevealBtn" class="toggle-button">Mostrar respuestas al finalizar</button>
         </div>
         <div class="timer-controls">
           <div class="timer-row"><label for="durationSelect">Duración</label><select id="durationSelect"><option value="180">3 minutos</option><option value="300">5 minutos</option><option value="480">8 minutos</option><option value="600">10 minutos</option><option value="900">15 minutos</option></select></div>

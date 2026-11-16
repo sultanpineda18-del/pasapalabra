@@ -11,15 +11,18 @@ test.before(async()=>{origin=await base()});
 test.after(async()=>{await new Promise(r=>server.close(r))});
 test('banco de preguntas y nuevas rondas',()=>{
   assert.equal(LETTERS.length,27);
-  assert.equal(LETTERS.reduce((n,l)=>n+BANK[l].length,0),135);
-  for (let i=0;i<30;i++) {
+  assert.equal(LETTERS.reduce((n,l)=>n+BANK[l].length,0),1350);
+  assert.ok(LETTERS.every(l=>BANK[l].length===50));
+  assert.equal(new Set(LETTERS.flatMap(l=>BANK[l].map(q=>q.q.toLowerCase()))).size,1350);
+  for (let i=0;i<50;i++) {
     const qs=buildQuestions();
     assert.equal(qs.length,27);
     assert.equal(qs.filter(q=>q.type==='ciudadania').length,8);
-    assert.ok(qs.some(q=>q.a==='Pobreza'),'Cada ronda debe incluir pobreza');
+    assert.ok(qs.some(q=>['Pobreza','Protección social','Reducción de la pobreza','Pobreza multidimensional'].includes(q.a)),'Cada ronda incluye un concepto de pobreza o protección social');
     assert.equal(new Set(qs.map(q=>q.a.toLowerCase())).size,27);
     const again=buildQuestions(qs);
     assert.equal(qs.filter((q,j)=>q.id===again[j].id).length,0);
+    assert.equal(qs.filter((q,j)=>q.a===again[j].a).length,0);
   }
 });
 test('crear sala, consultar estados, protección de control y cronómetro',async()=>{
