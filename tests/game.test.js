@@ -75,3 +75,42 @@ test('recursos públicos disponibles y SSE sincronizable',async()=>{
   assert.match(new TextDecoder().decode(part.value),/event: state/);
   reader.cancel();
 });
+
+test('banco público y edición protegida con persistencia',async()=>{
+  const fs=require('node:fs');
+  const {DATA_FILE}=require('../question-store');
+  for(const pathname of ['/banco','/banco.css','/banco.js']){
+    const r=await fetch(origin+pathname);
+    assert.equal(r.status,200,pathname);
+  }
+  const initial=(await (await fetch(origin+'/api/bank')).json());
+  assert.equal(initial.total,1350);
+  assert.equal(initial.questions.A.length,50);
+  const entry={letter:'A',question:'¿Cómo se llama el cariño y apoyo que se comparte al ayudar?',answer:'Ayuda',type:'entretenimiento'};
+  const wrong=await fetch(origin+'/api/admin/questions/add',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:'incorrecta',...entry})});
+  assert.equal(wrong.status,403);
+  process.env.PASAPALABRA_ADMIN_PASSWORD='prueba-de-contraseña-segura-123456';
+  const verify=await fetch(origin+'/api/admin/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:process.env.PASAPALABRA_ADMIN_PASSWORD})});
+  assert.equal(verify.status,200);
+  const request=async(mode,data)=>{
+    const r=await fetch(origin+'/api/admin/questions/'+mode,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:process.env.PASAPALABRA_ADMIN_PASSWORD,...data})});
+    const body=await r.json();
+    assert.equal(r.status,200,JSON.stringify(body));
+    return body;
+  };
+  try{
+    const added=await request('add',entry);
+    const id=added.question.id;
+    assert.equal((await (await fetch(origin+'/api/bank')).json()).total,1351);
+    assert.ok(JSON.parse(fs.readFileSync(DATA_FILE,'utf8')).A.some(q=>q.id===id));
+    await request('edit',{...entry,id,question:'¿Qué llamamos a la acción de brindar apoyo a otra persona?'});
+    assert.ok(JSON.parse(fs.readFileSync(DATA_FILE,'utf8')).A.some(q=>q.id===id&&q.q.includes('acción')));
+    const invalid=await fetch(origin+'/api/admin/questions/edit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:process.env.PASAPALABRA_ADMIN_PASSWORD,...entry,id,answer:'Zumo'})});
+    assert.equal(invalid.status,400);
+    await request('delete',{letter:'A',id});
+    assert.equal((await (await fetch(origin+'/api/bank')).json()).total,1350);
+    assert.equal(JSON.parse(fs.readFileSync(DATA_FILE,'utf8')).A.length,50);
+  }finally{
+    delete process.env.PASAPALABRA_ADMIN_PASSWORD;
+  }
+});

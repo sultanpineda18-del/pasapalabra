@@ -4,13 +4,13 @@ Juego para una actividad grupal: adultos mayores en una fundación. Mezcla pregu
 
 ## Incluye
 
-- Rosco de 27 letras (con Ñ), con **135 preguntas**: cinco por letra.
-- Ocho preguntas sociales y 19 recreativas por ronda, elegidas automáticamente, con al menos una sobre pobreza.
-- Nueva ronda con preguntas distintas de la anterior (en la misma letra).
+- Rosco de 27 letras (con Ñ), con **1.350 preguntas**: 50 por letra.
+- Ocho preguntas sociales y 19 recreativas por ronda, elegidas automáticamente, con al menos una sobre pobreza o protección social.
+- Nueva ronda con preguntas y respuestas diferentes de la ronda anterior en cada letra, siempre que haya alternativas.
 - Temporizador de 3, 5, 8, 10 o 15 minutos.
 - Verde/rojo en el centro por **0,7 segundos**, con colores permanentes en las letras.
 - Opción de pasar palabra, mostrar/ocultar pregunta y ofrecer una pista adicional.
-- Una pantalla pública sin controles ni respuestas y una pantalla privada de control.
+- Una pantalla pública sin controles y una pantalla privada de control con las respuestas siempre visibles. La persona que dirige decide cuándo mostrar una respuesta al público y si revelar el resumen final; al terminar aparece una animación de agradecimiento.
 - Las dos pantallas se sincronizan por internet y **no necesitan estar en la misma red Wi-Fi**.
 - Interfaz adaptable a móviles y proyectores. No requiere instalar una app.
 
@@ -54,3 +54,39 @@ Abre http://localhost:3000 y crea una partida. También se puede ejecutar `npm t
 - El enlace de presentación es público y seguro para compartir. El enlace de **control es privado**: quien lo tenga puede marcar respuestas, pausar y reiniciar la ronda.
 - Es necesaria una conexión a internet para sincronizar dos dispositivos en distintas redes. Si no hay internet, se recomienda conservar la versión local como respaldo.
 - El alojamiento en Railway puede consumir crédito o tener costo según el plan.
+
+## Banco de preguntas editable (nueva función)
+
+La ruta `https://TU-DOMINIO/banco` permite buscar las 1.350 preguntas por letra,
+categoría o texto, y descargar un respaldo JSON. El botón **Desbloquear edición**
+solicita una contraseña antes de agregar, modificar o eliminar preguntas.
+
+Para instalar esta actualización, reemplaza en el repositorio los archivos
+`server.js`, `public/index.html`, `tests/game.test.js` y añade
+`question-store.js`, `public/banco.html`, `public/banco.css`, `public/banco.js`.
+Mantén `banco-preguntas.json`, `package.json`, `railway.json` y el resto de
+archivos. También se puede subir el ZIP completo a un repositorio nuevo.
+
+### Activar edición y persistencia en Railway
+
+1. En el servicio **pasapalabra**, abre **Variables** y agrega:
+   - `PASAPALABRA_ADMIN_PASSWORD`: una contraseña robusta que solo conozca el administrador
+     (al menos 12 caracteres; mejor 16 o más).
+   - `QUESTION_BANK_PATH`: `/data/banco-preguntas.json`
+2. En el proyecto, crea un **Volume** nuevo y móntalo en el servicio `pasapalabra`
+   exactamente en la ruta `/data`. Esto protege los cambios ante reinicios,
+   despliegues y Serverless. **Importante:** Railway puede consumir crédito por
+   almacenamiento. Revisa tu plan y consumo antes de aprovisionarlo.
+3. Si Railway informa errores de permisos de escritura sobre el volumen,
+   agrega `RAILWAY_RUN_UID=0` en Variables y vuelve a desplegar.
+4. Abre `/banco`, pulsa **Desbloquear edición** y escribe tu contraseña.
+
+**Seguridad:** La contraseña nunca está incluida en el código ni en el ZIP;
+se valida en el servidor. El navegador la conserva solo mientras la página
+permanece abierta. No compartas la contraseña ni el enlace del panel de
+control del juego con el público. No elimines el volumen después de editar,
+porque contiene las modificaciones. Descarga respaldos JSON periódicamente.
+
+Las partidas ya comenzadas conservan sus preguntas originales; las nuevas
+preguntas se usarán desde la siguiente sala/partida. Si cambias una pregunta
+sin un volumen persistente, los cambios pueden perderse al reiniciar Railway.

@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const crypto = require('node:crypto');
 const {URL} = require('node:url');
-const BANK = require('./banco-preguntas.json');
+const {BANK,changeBank,listBank,DATA_FILE} = require('./question-store');
 const LETTERS = Object.keys(BANK);
 const PORT = Number(process.env.PORT || 3000);
 const HOST = process.env.HOST || '0.0.0.0';
@@ -12,6 +12,7 @@ const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 const rooms = new Map();
 const DURATION = [180,300,480,600,900];
 const FLASH_MS = 700;
+const failedAdmin = new Map();
 const random = n => crypto.randomInt(n);
 const pick = values => values[random(values.length)];
 
@@ -25,6 +26,25 @@ function json(res,status,data){
   res.end(JSON.stringify(data));
 }
 function fail(res,status,message){ json(res,status,{error:message}); }
+function allowedAdmin(password){
+  const expected=process.env.PASAPALABRA_ADMIN_PASSWORD;
+  if(typeof expected!=='string'||expected.length<12||typeof password!=='string'||password.length>256)return false;
+  const left=crypto.createHash('sha256').update(password).digest();
+  const right=crypto.createHash('sha256').update(expected).digest();
+  return crypto.timingSafeEqual(left,right);
+}
+function adminAuthorized(req,data){
+  const ip=req.socket.remoteAddress||'unknown';
+  const now=Date.now();
+  const attempts=(failedAdmin.get(ip)||[]).filter(time=>time>now-15*60*1000);
+  if(attempts.length>=12)throw Object.assign(Error('Demasiados intentos. Vuelve a intentarlo en 15 minutos.'),{status:429});
+  if(!allowedAdmin(data.password)){
+    attempts.push(now); failedAdmin.set(ip,attempts);
+    throw Object.assign(Error('Contraseña incorrecta o edición no configurada'),{status:403});
+  }
+  failedAdmin.delete(ip);
+}
+
 function roomCode(){
   for(let t=0;t<40;t++){
     let value='';
@@ -278,8 +298,8 @@ function events(req,res,room,host){
 }
 const CONTENT_TYPES={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml','.json':'application/json; charset=utf-8','.png':'image/png'};
 function staticFile(res,pathname){
-  const file=pathname==='/'?'/index.html':pathname;
-  if(!['/index.html','/style.css','/app.js','/favicon.svg'].includes(file)) return fail(res,404,'Página no encontrada');
+  const file=pathname==='/'?'/index.html':pathname==='/banco'?'/banco.html':pathname;
+  if(!['/index.html','/style.css','/app.js','/favicon.svg','/banco.html','/banco.css','/banco.js'].includes(file)) return fail(res,404,'Página no encontrada');
   const full=path.join(__dirname,'public',file);
   fs.readFile(full,(err,buf)=>{
     if(err) return fail(res,404,'No encontrado');
@@ -295,6 +315,22 @@ function staticFile(res,pathname){
 const server=http.createServer(async(req,res)=>{
   const url=new URL(req.url,'http://localhost');
   const pathname=url.pathname;
+  if(req.method==='GET'&&pathname==='/api/bank')return json(res,200,listBank());
+  if(req.method==='GET'&&pathname==='/api/bank/status')return json(res,200,{editingEnabled:typeof process.env.PASAPALABRA_ADMIN_PASSWORD==='string'&&process.env.PASAPALABRA_ADMIN_PASSWORD.length>=12,persistentStorage:process.env.QUESTION_BANK_PATH===DATA_FILE&&DATA_FILE.startsWith('/data/')});
+  if(req.method==='POST'&&pathname.startsWith('/api/admin/')){
+    try{
+      const data=await readJson(req);
+      adminAuthorized(req,data);
+      if(pathname==='/api/admin/verify')return json(res,200,{ok:true});
+      let mode;
+      if(pathname==='/api/admin/questions/add') mode='add';
+      else if(pathname==='/api/admin/questions/edit') mode='edit';
+      else if(pathname==='/api/admin/questions/delete') mode='remove';
+      else return fail(res,404,'Acción no encontrada');
+      const result=changeBank(mode,data);
+      return json(res,200,{ok:true,question:result,total:listBank().total});
+    }catch(err){return fail(res,err.status||400,err.message||'No se pudo guardar');}
+  }
   if(req.method==='GET'&&pathname==='/salud') return json(res,200,{ok:true,service:'pasapalabra-online'});
   if(req.method==='POST'&&pathname==='/api/rooms'){
     if(rooms.size>=300) return fail(res,503,'Se alcanzó el límite de salas activas');
